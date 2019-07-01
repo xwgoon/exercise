@@ -65,7 +65,7 @@ public class Test {
 //        float f=3401483648_3243242323_3423423423_442342340f;
 //        System.out.println(f);
 
-//        String s = "A啊\uD835\uDD6B!";
+        String s = "A啊\uD842\uDFB7牛";
 //        String s2 = "ab你好!";
 
 //        System.out.println(s.offsetByCodePoints(0,3));
@@ -81,17 +81,26 @@ public class Test {
 //        System.out.println(new String(Character.toChars(s.codePointAt(3))));
 
 
-//        int[] codePoints = s.codePoints().toArray();
-//        System.out.println(Arrays.toString(codePoints));
-//        System.out.println(new String(codePoints, 0, codePoints.length));
-//
-//        for (int cp : codePoints) {
+        System.out.println(s.length());
+        System.out.println(s.codePointCount(0, s.length()));
+        System.out.println(new String(Character.toChars(s.codePointAt(3)))); //不能打印
+        System.out.println(new String(Character.toChars(s.codePointAt(4)))); //"牛"
+
+        int[] codePoints = s.codePoints().toArray();
+        System.out.println(Arrays.toString(codePoints));
+        System.out.println(new String(codePoints, 0, codePoints.length));
+        for (int cp : codePoints) {
 //            if (Character.isSupplementaryCodePoint(cp)) {
-//                System.out.print("<" + new String(Character.toChars(cp)) + ">");
+//                System.out.print(new String(Character.toChars(cp)));
 //            } else {
 //                System.out.print((char) cp);
 //            }
-//        }
+
+            System.out.println("方式1：" + new String(Character.toChars(cp))); //正确
+            System.out.println("方式2：" + (char) cp); //错误
+        }
+
+
 
 
 //        System.out.println(s.length());
@@ -220,33 +229,33 @@ public class Test {
 //            e.printStackTrace();
 //        }
 
-        Size sz = Size.MEDIUM;
-        switch (sz) {
-            case SMALL:
-                System.out.println("small");
-//            {
-                StringBuilder sb=new StringBuilder();
-                sb.append("small");
-                System.out.println(sb.toString());
-                break;
-//            }
-
-            case MEDIUM:
-//                System.out.println("medium");
-//            {
-//                sb=new StringBuilder();
-//                sb.append("medium");
+//        Size sz = Size.MEDIUM;
+//        switch (sz) {
+//            case SMALL:
+//                System.out.println("small");
+////            {
+//                StringBuilder sb=new StringBuilder();
+//                sb.append("small");
 //                System.out.println(sb.toString());
-//            }
-//
 //                break;
-            case LARGE:
-                System.out.println("large");
-                break;
-            default:
-                System.out.println("none");
-                break;
-        }
+////            }
+//
+//            case MEDIUM:
+////                System.out.println("medium");
+////            {
+////                sb=new StringBuilder();
+////                sb.append("medium");
+////                System.out.println(sb.toString());
+////            }
+////
+////                break;
+//            case LARGE:
+//                System.out.println("large");
+//                break;
+//            default:
+//                System.out.println("none");
+//                break;
+//        }
 
 
 

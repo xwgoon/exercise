@@ -41,4 +41,9 @@ public class Manager extends Employee {
                 "bonus=" + bonus +
                 '}';
     }
+
+    @Override
+    protected int f5() {
+        return 0;
+    }
 }

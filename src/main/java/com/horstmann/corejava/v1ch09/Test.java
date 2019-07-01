@@ -1,6 +1,7 @@
 package com.horstmann.corejava.v1ch09;
 
 import com.horstmann.corejava.v1ch05.equals.Employee;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 
 import java.util.*;
 
@@ -147,18 +148,19 @@ public class Test {
 //        System.out.println(employee.hashCode());
 //        System.out.println(System.identityHashCode(employee));
 //
-        EnumSet<Weekday> weekdays = EnumSet.allOf(Weekday.class);
+//        EnumSet<Weekday> weekdays = EnumSet.allOf(Weekday.class);
+//        weekdays.add(Weekday.FRIDAY);
 //        System.out.println(weekdays);
-//
-        weekdays = EnumSet.noneOf(Weekday.class);
-        System.out.println(weekdays);
+////
+//        weekdays = EnumSet.noneOf(Weekday.class);
+//        System.out.println(weekdays);
 //
 //        weekdays = EnumSet.range(Weekday.TUESDAY, Weekday.FRIDAY);
 //        System.out.println(weekdays);
 //
-        weekdays = EnumSet.of(Weekday.TUESDAY, Weekday.THURSDAY, Weekday.SATURDAY);
-        System.out.println(weekdays);
-        System.out.println(EnumSet.complementOf(weekdays));
+//        weekdays = EnumSet.of(Weekday.TUESDAY, Weekday.THURSDAY, Weekday.SATURDAY);
+//        System.out.println(weekdays);
+//        System.out.println(EnumSet.complementOf(weekdays));
 //
 //        EnumMap<Weekday, String> em=new EnumMap<>(Weekday.class);
 //        System.out.println(em.size());
@@ -290,15 +292,37 @@ public class Test {
 //        System.out.println("newValue: " + newValue);
 //        System.out.println(map);
 
+//        ArrayList<String> staff = new ArrayList<>();
+//        staff.add("a");
+//        staff.add("b");
+//        staff.add("c");
+//        System.out.println("staff: " + staff);
+//        Iterator<String> iterator=staff.iterator();
+//        String first=iterator.next();
+//        String second=iterator.next();
+//        iterator.remove();
+//        System.out.println(staff);
 
+//        ArrayList<String> boss = new ArrayList<>();
+//        boss = (ArrayList<String>) staff.clone();
+//        System.out.println("boss: " + boss);
+//
+//        staff.add("d");
+//        staff.set(1, "bb");
+//
+//        System.out.println("staff: " + staff);
+//        System.out.println("boss: " + boss);
+
+        System.identityHashCode("");
 
 
     }
+
+//    enum Weekday {
+//        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+//    }
 }
 
-enum Weekday {
-    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
-}
 
 //
 //interface MyInterface<T> {

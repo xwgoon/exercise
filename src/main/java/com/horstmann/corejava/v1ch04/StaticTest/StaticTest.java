@@ -37,11 +37,14 @@ class Employee
    private double salary;
    private int id;
 
+   public Employee(){
+   }
+
    public Employee(String n, double s)
    {
-      name = n;
-      salary = s;
-      id = 0;
+//      name = n;
+//      salary = s;
+//      id = 0;
    }
 
    public String getName()
@@ -70,9 +73,18 @@ class Employee
       return nextId; // returns static field
    }
 
+   @Override
+   public String toString() {
+      return "Employee{" +
+              "name='" + name + '\'' +
+              ", salary=" + salary +
+              ", id=" + id +
+              '}';
+   }
+
    public static void main(String[] args) // unit test
    {
       Employee e = new Employee("Harry", 50000);
-      System.out.println(e.getName() + " " + e.getSalary());
+      System.out.println(e);
    }
 }

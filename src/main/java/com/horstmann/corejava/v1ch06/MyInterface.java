@@ -10,8 +10,8 @@ public interface MyInterface {
         return "print";
     }
 
-    //    @Override
-//    default String string() {
-//        return "call MyInterface string()";
-//    }
+    default String string() {
+        System.out.println(hashCode());
+        return "call MyInterface string()";
+    }
 }

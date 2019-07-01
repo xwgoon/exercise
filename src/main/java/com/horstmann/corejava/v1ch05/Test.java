@@ -7,6 +7,7 @@ import com.sun.org.apache.bcel.internal.generic.NEWARRAY;
 import org.omg.CORBA.IntHolder;
 
 import java.lang.reflect.*;
+import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.text.NumberFormat;
 import java.util.*;
@@ -221,12 +222,11 @@ public class Test {
 //        a = Arrays.copyOf(a, 10);
 //        System.out.println(Arrays.toString(a));
 
-        Manager[] managers=new Manager[10];
-        Employee[] employees=new Employee[10];
-//        List<Manager> managers=(List<Manager>) employees;
-        managers=(Manager[]) employees;
-        employees=managers;
-
+//        Manager[] managers=new Manager[10];
+//        Employee[] employees=new Employee[10];
+////        List<Manager> managers=(List<Manager>) employees;
+//        managers=(Manager[]) employees;
+//        employees=managers;
 
 
     }

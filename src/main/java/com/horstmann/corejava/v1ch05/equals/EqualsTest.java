@@ -33,5 +33,13 @@ public class EqualsTest
       System.out.println("alice3.hashCode(): " + alice3.hashCode());
       System.out.println("bob.hashCode(): " + bob.hashCode());
       System.out.println("carl.hashCode(): " + carl.hashCode());
+       System.out.println(new Object(){}.getClass().getEnclosingClass().getSimpleName());
+
+       Object o1=null;
+       Object o2=new Object();
+//       o2=o1;
+//       System.out.println(o1==o2);
+       System.out.println(o1);
+       System.out.println(o2);
    }
 }

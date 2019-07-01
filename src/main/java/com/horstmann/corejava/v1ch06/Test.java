@@ -19,7 +19,7 @@ public class Test {
 //        System.out.println(bigDecimal.equals(bigDecimal1));
 //        System.out.println(bigDecimal.compareTo(bigDecimal1));
 
-//        System.out.println(MyInterface.print());
+        System.out.println(MyInterface.print());
 //        MyInterface myInterface= () -> System.out.println("呵呵");
 
 //        MyInterface myInterface2= new MyInterface() {

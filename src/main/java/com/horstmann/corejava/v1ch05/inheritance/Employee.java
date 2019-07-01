@@ -78,9 +78,10 @@ public class Employee {
 //    void f4(){
 //        System.out.println("Employee: f1");
 //    }
-//    protected void f5(){
-//        System.out.println("Employee: f1");
-//    }
+    protected int f5(){
+        System.out.println("Employee: f1");
+        return 0;
+    }
 //    public void f6(){
 //        System.out.println("Employee: f1");
 //    }

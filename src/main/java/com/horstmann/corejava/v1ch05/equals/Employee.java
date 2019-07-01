@@ -9,6 +9,8 @@ public class Employee
    private double salary;
    private LocalDate hireDay;
 
+   public Employee(){}
+
    public Employee(String name, double salary, int year, int month, int day)
    {
       this.name = name;
