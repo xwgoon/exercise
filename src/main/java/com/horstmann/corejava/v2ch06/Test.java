@@ -18,6 +18,13 @@ public class Test {
 //
 //        System.out.println(date.with(TemporalAdjusters.lastDayOfMonth()));
 
+//        LocalDate date = LocalDate.of(2015, 12, 28);
+//        WeekFields weekFields = WeekFields.of(DayOfWeek.MONDAY,4);
+//        System.out.println(date.get(WeekFields.ISO.weekBasedYear()));
+//        System.out.println(date.get(WeekFields.ISO.weekOfWeekBasedYear()));
+
+        System.out.println(LocalDate.now().plusDays(1).isAfter(LocalDate.now()));
+
 
     }
 }

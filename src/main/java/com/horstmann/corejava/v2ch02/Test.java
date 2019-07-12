@@ -6,6 +6,7 @@ import org.apache.commons.codec.Charsets;
 
 import java.io.*;
 import java.net.SocketTimeoutException;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
@@ -137,18 +138,43 @@ public class Test {
 //        List<String> lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);
 //        lines.forEach(System.out::println);
 
-        Path path1 = Paths.get("test2", "test");
+//        Path path1 = Paths.get("test2", "test");
 //        Files.copy(path0, path1, StandardCopyOption.REPLACE_EXISTING);
 //        Files.move(path1, path0, StandardCopyOption.ATOMIC_MOVE);
-        Files.deleteIfExists(path1);
+//        Files.deleteIfExists(path1);
 
 //        System.out.println(Files.size(filePath));
 
 //        Path path=Paths.get("d3.txt");
 //        Files.createFile(path);
 
+downloadFile();
 
+    }
 
+    /**
+     * 文件下载（或文件复制）
+     */
+    public static void downloadFile() throws IOException {
+        Path p = Paths.get("/test/t_new.txt");
+        Files.createDirectories(p.getParent());
+        Files.createFile(p);
+
+        FileOutputStream fileOutputStream = new FileOutputStream(p.toFile());
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        int length;
+
+        InputStream inputStream = new FileInputStream("/t.txt"); //本地文件复制
+//        InputStream inputStream = new URL("url").openStream(); //网络文件下载
+        DataInputStream dataInputStream = new DataInputStream(inputStream);
+        while ((length = dataInputStream.read(buffer)) > 0) {
+            output.write(buffer, 0, length);
+        }
+        fileOutputStream.write(output.toByteArray());
+
+        dataInputStream.close();
+        fileOutputStream.close();
     }
 }
 
