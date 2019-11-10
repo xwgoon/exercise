@@ -22,4 +22,8 @@ public class Employee
    {
       return "[name=" + name + ", salary=" + salary + "]";
    }
+
+   public static class Super{
+
+   }
 }
