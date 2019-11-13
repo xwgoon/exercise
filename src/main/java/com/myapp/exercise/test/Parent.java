@@ -2,8 +2,21 @@ package com.myapp.exercise.test;
 
 public class Parent {
 
-    private String name;
+    private static String id = "123"; //①
+    private String name = "张三"; //③
     private Integer age;
+
+    static {
+        System.out.println("static block"); //②
+    }
+
+    {
+        System.out.println("construct block"); //④
+    }
+
+    public Parent() {
+        System.out.println("constructor"); //⑤
+    }
 
     public String getName() {
         return name;
