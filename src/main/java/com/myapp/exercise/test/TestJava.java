@@ -1,6 +1,7 @@
 package com.myapp.exercise.test;
 
 import com.alibaba.fastjson.JSON;
+import com.horstmann.corejava.v1ch09.map.Employee;
 import com.sun.istack.internal.NotNull;
 import org.apache.commons.codec.language.DoubleMetaphone;
 import org.apache.commons.codec.language.bm.Lang;
@@ -18,6 +19,7 @@ import java.nio.file.Paths;
 import java.text.MessageFormat;
 import java.time.*;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class TestJava {
 
@@ -206,8 +208,104 @@ public class TestJava {
 //        Child c1 = JSON.parseObject(text_beanToArray, Child.class);
 //        System.out.println(c1);
 
+//        TestJava testJava=new TestJava();
+//        testJava.fun();
+
+//        numElementsInCommon1(new HashSet<String>(),new HashSet<Integer>());
+//        numElementsInCommon1(null,null);
+//        numElementsInCommon2(new HashSet<String>(),new HashSet<Integer>());
+//        numElementsInCommon2(null,null);
+
+//        fun(Integer.class, 1);
+
+//        Map<Class, Object> map = new HashMap<>();
+//        map.put(String.class, "a");
+//        map.put(Integer.class, 1);
+//        System.out.println(map.get(String.class));
+//        System.out.println(map.get(Integer.class));
+//
+//        Class<String> stringClass = String.class;
+//        Class<String> stringClass1 = String.class;
+//        System.out.println(stringClass == stringClass1);
+
+        String[] strings1=toArray("aa", "bb");
+
+//        String[] strings=pickTwo("aa", "bb", "cc");
+//        Integer[] integers=pickTwo(1, 2, 3);
+
     }
 
+    private static <T> T[] pickTwo(T a, T b, T c){
+        switch (ThreadLocalRandom.current().nextInt(3)){
+            case 0: return toArray(a,b);
+            case 1: return toArray(a,c);
+            case 2: return toArray(b,c);
+        }
+        throw new AssertionError();
+    }
+
+    private static <T> T[] toArray(T... args){
+        System.out.println(args);
+        return args;
+    }
+
+//    public class Stack<E> {
+//        public Stack(){};
+//        public void push(E e){};
+//        public E pop(){return null;};
+//        public boolean isEmpty(){return false;};
+//
+//        public void pushAll(Iterable<? extends E> src) {
+//            for (E e : src)
+//                push(e);
+//        }
+//    }
+
+//    static int numElementsInCommon1(Set s1, Set s2) {
+//        int result = 0;
+//        for (Object o1 : s1)
+//            if (s2.contains(o1))
+//                result++;
+//        return result;
+//    }
+//
+//    static int numElementsInCommon2(Set<?> s1, Set<?> s2) {
+//        int result = 0;
+//        for (Object o1 : s1)
+//            if (s2.contains(o1))
+//                result++;
+//        return result;
+//    }
+//
+//    private void fun(){
+//
+//        Child parent=new Child();
+//
+//
+//    }
+//
+//    private static class Parent{
+//
+//        public Parent(){
+//            print();
+//        }
+//
+//        public static void print(){
+//            System.out.println("Parent.print()");
+//        }
+//    }
+//
+//    private static class Child extends Parent{
+//
+//        public Child(){
+//            print();
+//        }
+//
+//        public static void print(){
+//            System.out.println("Child.print()");
+//        }
+//
+//    }
 
 //    public void fun(){
 //        list.add("hello");
