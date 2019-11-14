@@ -18,6 +18,11 @@ public class Parent {
         System.out.println("constructor"); //⑤
     }
 
+    public Parent(Integer age) {
+        this.age = age;
+    }
+
+
     public String getName() {
         return name;
     }

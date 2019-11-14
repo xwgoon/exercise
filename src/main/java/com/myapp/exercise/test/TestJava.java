@@ -20,6 +20,8 @@ import java.text.MessageFormat;
 import java.time.*;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TestJava {
 
@@ -228,26 +230,51 @@ public class TestJava {
 //        Class<String> stringClass1 = String.class;
 //        System.out.println(stringClass == stringClass1);
 
-        String[] strings1=toArray("aa", "bb");
+//        String[] strings1=toArray("aa", "bb");
 
 //        String[] strings=pickTwo("aa", "bb", "cc");
 //        Integer[] integers=pickTwo(1, 2, 3);
 
+//        List<Parent> parentList = new ArrayList<>();
+//        parentList.add(new Parent(10));
+//        parentList.add(new Parent(60));
+//        parentList.add(new Parent(30));
+//        parentList.add(new Parent(90));
+//        Random random = new Random();
+//        for (int i = 0; i < 10_000_000; i++) {
+//            parentList.add(new Parent(random.nextInt(100)));
+//        }
+
+//        long start = System.currentTimeMillis();
+//        List<Integer> nameList0 = parentList.stream().filter(it -> it.getAge() > 50).map(Parent::getAge).collect(Collectors.toList());
+//        System.out.println("nameList0: " + (System.currentTimeMillis() - start));
+//        System.out.println(nameList0.size());
+//
+//        start = System.currentTimeMillis();
+//        List<Integer> nameList1 = parentList.stream().map(Parent::getAge).filter(it -> it > 50).collect(Collectors.toList());
+//        System.out.println("nameList1: " + (System.currentTimeMillis() - start));
+//        System.out.println(nameList1.size());
+
+//        start = System.currentTimeMillis();
+//        List<Integer> nameList2 = parentList.stream().flatMap(it -> it.getAge() > 50 ? Stream.of(it.getAge()) : Stream.empty()).collect(Collectors.toList());
+//        System.out.println("nameList2: " + (System.currentTimeMillis() - start));
+//        System.out.println(nameList2.size());
+
     }
 
-    private static <T> T[] pickTwo(T a, T b, T c){
-        switch (ThreadLocalRandom.current().nextInt(3)){
-            case 0: return toArray(a,b);
-            case 1: return toArray(a,c);
-            case 2: return toArray(b,c);
-        }
-        throw new AssertionError();
-    }
-
-    private static <T> T[] toArray(T... args){
-        System.out.println(args);
-        return args;
-    }
+//    private static <T> T[] pickTwo(T a, T b, T c){
+//        switch (ThreadLocalRandom.current().nextInt(3)){
+//            case 0: return toArray(a,b);
+//            case 1: return toArray(a,c);
+//            case 2: return toArray(b,c);
+//        }
+//        throw new AssertionError();
+//    }
+//
+//    private static <T> T[] toArray(T... args){
+//        System.out.println(args);
+//        return args;
+//    }
 
 //    public class Stack<E> {
 //        public Stack(){};
