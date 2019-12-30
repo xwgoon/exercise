@@ -1,0 +1,47 @@
+
+arr[ordinal/64] & (1<<(ordinal%64))
+
+arr[ordinal>>>6] & (1L<<ordinal)
+
+
+remove:elements&=~(1<<ordinal)
+      1010
+0010->1101
+      1000
+
+add:elements|=1<<ordinal
+1010
+0100
+1110
+
+1110
+1100
+1100
+~elements & es.elements == 0
+
+
+1010
+1010
+1010
+
+elements ^ es.elements == 0
+
+11111111
+0000000111  -1>>>-to.ordinal
+0000000111  -1>>>-from.ordinal
+
+00011100     -1<<(2+3) -1>>>3
+from to
+2    4
+1    3  00001110
+
+-1<<(from+to-1)>>>(to-1)
+-1<<3>>>2
+001110
+
+11100000
+00011100
+
+
+element|=-1>>>-from.ordinal<<to.ordinal
+

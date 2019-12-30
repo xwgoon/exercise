@@ -27,7 +27,33 @@ public class TestJava {
 
 //    private final List<String> list=new ArrayList<>();
 
+//    private Map<Class, Object> favorites = new HashMap<>();
+//    public <T> void putFavorite(Class<T> type, T instance) {
+//        favorites.put(Objects.requireNonNull(type), instance);
+//    }
+//    public <T> T getFavorite(Class<T> type) {
+//        return type.cast(favorites.get(type));
+//    }
+
     public static void main(String[] args) {
+
+//        TestJava f = new TestJava();
+//        f.putFavorite(String.class, "Java");
+//        f.putFavorite(Integer.class, 0xcafebabe);
+//        f.putFavorite(Class.class, TestJava.class);
+////        f.putFavorite(null, TestJava.class);
+//
+//        String favoriteString = f.getFavorite(String.class);
+//        int favoriteInteger = f.getFavorite(Integer.class);
+//        Class<?> favoriteClass = f.getFavorite(Class.class);
+////        Class<?> favoriteClass1 = f.getFavorite(null);
+//        System.out.printf("%s %x %s%n", favoriteString,
+//                favoriteInteger, favoriteClass.getName());
+//
+//        Map<?,Object> map=new HashMap<>();
+//        map.put(null,1);
+//
+//        System.out.println();
 
         //begin
 //        List<String> schedules = new ArrayList<>();
