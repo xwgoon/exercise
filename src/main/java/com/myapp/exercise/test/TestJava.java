@@ -1,6 +1,8 @@
 package com.myapp.exercise.test;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
+import com.alibaba.fastjson.support.spring.PropertyPreFilters;
 import com.horstmann.corejava.v1ch09.map.Employee;
 import com.sun.istack.internal.NotNull;
 import org.apache.commons.codec.language.DoubleMetaphone;
@@ -191,13 +193,13 @@ public class TestJava {
 //        child.setSchool("清华大学");
 
 //        System.out.println(JSON.toJSONString(child));
-
-//        PropertyPreFilters.MySimplePropertyPreFilter pf = new PropertyPreFilters().new MySimplePropertyPreFilter();
-//        pf.addIncludes("name", "age");
-//        System.out.println(JSON.toJSONString(child, pf));
 //
-//        PropertyPreFilters.MySimplePropertyPreFilter pf2 = new PropertyPreFilters().new MySimplePropertyPreFilter();
-//        pf2.addExcludes("age");
+//        SimplePropertyPreFilter pf1 = new SimplePropertyPreFilter();
+//        pf1.getExcludes().add("name");
+//        System.out.println(JSON.toJSONString(child, pf1));
+
+//        SimplePropertyPreFilter pf2 = new SimplePropertyPreFilter();
+//        pf2.getIncludes().add("name");
 //        System.out.println(JSON.toJSONString(child, pf2));
 //
 //        String text_beanToArray = JSON.toJSONString(child, SerializerFeature.BeanToArray);
