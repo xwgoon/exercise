@@ -1,5 +1,7 @@
 package com.horstmann.corejava.v1ch05.enums;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -33,10 +35,28 @@ public class EnumTest {
 //
 //        System.out.println(Enum.valueOf(Size.class, "LARGE"));
 //        System.out.println(Size.valueOf("LARGE"));
-        System.out.println(Arrays.toString(Size.values()));
+//        System.out.println(Arrays.toString(Size.values()));
 
 //        Arrays.asList(Size.values()).stream().filter();
 //        Stream.of(Size.values()).
+
+//        byte b = 0x7f; //正确
+//        short s = 0x7fff; //正确
+//        int i = 0x7fffffff; //正确
+//        long l = 1; //正确
+//        float f = 1; //正确
+//        double d = 1; //正确
+//
+//        Byte B = 1; //正确
+//        Short S = 1; //正确
+//        Integer I = 1; //正确
+//        Long L = 1L; //编译报错，须写成 1L（1l）
+//        Float F = 1f; //编译报错，须写成 1f（1F）
+//        Double D = 1d; //编译报错，须写成 1d（1D或1.）
+
+        System.out.println(StringUtils.leftPad(Integer.toBinaryString(-1 << 3 >>> 2), 32, "0"));
+//        System.out.println(Integer.toBinaryString(-1<<1));
+//        System.out.println(Integer.toBinaryString(-1<<-31));
 
 
     }
