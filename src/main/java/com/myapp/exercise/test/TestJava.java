@@ -1,29 +1,7 @@
 package com.myapp.exercise.test;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
-import com.alibaba.fastjson.support.spring.PropertyPreFilters;
-import com.horstmann.corejava.v1ch09.map.Employee;
-import com.sun.istack.internal.NotNull;
-import org.apache.commons.codec.language.DoubleMetaphone;
-import org.apache.commons.codec.language.bm.Lang;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.w3c.dom.Document;
-
-import java.io.File;
-import java.io.PrintStream;
-import java.lang.reflect.Array;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.MessageFormat;
-import java.time.*;
-import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class TestJava {
 
@@ -287,6 +265,36 @@ public class TestJava {
 //        List<Integer> nameList2 = parentList.stream().flatMap(it -> it.getAge() > 50 ? Stream.of(it.getAge()) : Stream.empty()).collect(Collectors.toList());
 //        System.out.println("nameList2: " + (System.currentTimeMillis() - start));
 //        System.out.println(nameList2.size());
+
+
+//        int n=8;
+//        String s1="来得及伐的看法";
+//        String s2="违法多少啦";
+//
+//        int s1Hash=s1.hashCode();
+//        System.out.println(s1Hash);
+//        int s2Hash=s2.hashCode();
+//        System.out.println(s2Hash);
+//        System.out.println((n-1)&s1Hash);
+//        System.out.println(s1Hash%n);
+//        System.out.println((n-1)&s2Hash);
+//        System.out.println(s2Hash%n);
+
+        Map<Integer, Object> map=new LinkedHashMap<Integer, Object>(){
+            @Override
+            protected boolean removeEldestEntry(Map.Entry<Integer, Object> eldest) {
+                return size()>3;
+            }
+        };
+
+        map.put(1,"a");
+        map.put(2,"b");
+        map.put(2,"c");
+        map.put(3,"d");
+        System.out.println(map.get(1));
+        map.put(4,"e");
+
+        System.out.println(map);
 
     }
 

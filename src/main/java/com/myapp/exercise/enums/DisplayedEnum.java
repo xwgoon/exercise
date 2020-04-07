@@ -76,7 +76,8 @@ public interface DisplayedEnum {
     static <T extends Enum<T>> T valueOfEnum(Class<T> enumClass, Integer value) {
         if (value == null)
             throw  new IllegalArgumentException("DisplayedEnum value should not be null");
-        if (enumClass.isAssignableFrom(DisplayedEnum.class))
+//        if (enumClass.isAssignableFrom(DisplayedEnum.class))
+        if (!DisplayedEnum.class.isAssignableFrom(enumClass))
             throw new IllegalArgumentException("illegal DisplayedEnum type");
         T[] enums = enumClass.getEnumConstants();
         for (T t: enums) {

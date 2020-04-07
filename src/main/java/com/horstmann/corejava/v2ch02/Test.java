@@ -1,7 +1,6 @@
 package com.horstmann.corejava.v2ch02;
 
 import com.horstmann.corejava.v1ch06.MyInterface;
-import com.sun.org.apache.xpath.internal.SourceTree;
 import org.apache.commons.codec.Charsets;
 
 import java.io.*;

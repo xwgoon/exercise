@@ -3,7 +3,6 @@ package com.horstmann.corejava.v1ch05;
 import com.horstmann.corejava.v1ch05.inheritance.Employee;
 import com.horstmann.corejava.v1ch05.inheritance.Manager;
 import com.horstmann.corejava.v2ch04.socket.SocketTest;
-import com.sun.org.apache.bcel.internal.generic.NEWARRAY;
 import org.omg.CORBA.IntHolder;
 
 import java.lang.reflect.*;

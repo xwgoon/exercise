@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 /**
  * Created by shengmingYu on 2017/2/15.
  */
-public enum Status implements DisplayedEnum {
+public enum Status {
 
     VALID("有效", 0), INVALID("无效", 1);
 

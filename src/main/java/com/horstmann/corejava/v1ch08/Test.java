@@ -3,7 +3,6 @@ package com.horstmann.corejava.v1ch08;
 import com.horstmann.corejava.v1ch05.inheritance.Employee;
 import com.horstmann.corejava.v1ch05.inheritance.Manager;
 import org.springframework.util.SocketUtils;
-import sun.reflect.Reflection;
 
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
