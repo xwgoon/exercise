@@ -1,7 +1,8 @@
 package com.myapp.exercise.test;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class TestJava {
 
@@ -280,23 +281,178 @@ public class TestJava {
 //        System.out.println((n-1)&s2Hash);
 //        System.out.println(s2Hash%n);
 
-        Map<Integer, Object> map=new LinkedHashMap<Integer, Object>(){
-            @Override
-            protected boolean removeEldestEntry(Map.Entry<Integer, Object> eldest) {
-                return size()>3;
+//        Map<Integer, Object> map=new LinkedHashMap<Integer, Object>(){
+//            @Override
+//            protected boolean removeEldestEntry(Map.Entry<Integer, Object> eldest) {
+//                return size()>3;
+//            }
+//        };
+//
+//        map.put(1,"a");
+//        map.put(2,"b");
+//        map.put(2,"c");
+//        map.put(3,"d");
+//        System.out.println(map.get(1));
+//        map.put(4,"e");
+//
+//        System.out.println(map);
+
+//        String s = "bac";
+//        String s = "bacslklaoeiwszdlsafijewfaskifjhewoflashfowlafksodfhebppkeforjgtnnvuyyqakeufr";
+//        String r = s.chars().sorted().collect(
+//                StringBuilder::new,
+//                (sb, c) -> {
+//                    System.out.println("2: "+Thread.currentThread());
+//                    sb.append((char) c);
+//                },
+//                (r1,r2)->{
+//                    System.out.println("3: "+Thread.currentThread()+", r1: "+r1+", r2: "+r2);
+//                    r1.append(r2);
+//                })
+//                .toString();
+//        System.out.println(r);
+
+        /*List<String> list = new ArrayList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        String s = null;
+        list.forEach(it -> {
+            if ("b".equals(it)) {
+//                s=it; // 编译报错，lambda中必须使用常量或effectively常量，其实就是不能再次用等号对变量进行赋值
+//                return; // 结束本次循环，继续下次循环，作用相当于普通循环中的continue
+//                continue; // 编译报错，不能在此使用
+//                break; // 编译报错，不能在此使用
+//                throw new RuntimeException(); // 结束整个循环，作用相当于普通循环中的break
+//                throw new Exception(); // 编译报错，因为Consumer接口的accept方法未声明checked异常
             }
-        };
+            System.out.println(Thread.currentThread() + it);
+        });*/
 
-        map.put(1,"a");
-        map.put(2,"b");
-        map.put(2,"c");
-        map.put(3,"d");
-        System.out.println(map.get(1));
-        map.put(4,"e");
+//        Collection<?>[] collections = {
+//                new HashSet<String>(),
+//                new ArrayList<BigInteger>(),
+//                new HashMap<String, String>().values()
+//        };
+//        for (Collection<?> c : collections) {
+//            System.out.println(classify(c));
+//        }
+//
+//        Wine[] wines = {
+//                new Wine(),
+//                new SparklingWine(),
+//                new Champagne()
+//        };
+//
+//        for (Wine wine : wines) {
+//            System.out.println(wine.name());
+//        }
 
-        System.out.println(map);
+//        new Thread(System.out::println).start();
+//        ExecutorService exec = Executors.newCachedThreadPool();
+//        exec.submit((Runnable) System.out::println);
+
+        List<String> list1 = new ArrayList<>();
+        List<String> list2 = new ArrayList<>();
+        List<String> list3 = new ArrayList<>();
+        List<String> list4 = new ArrayList<>();
+        List<String> list5 = new ArrayList<>();
+        for (int i = 0; i < 100000; i++) {
+            list1.add(String.valueOf(i));
+            list2.add(String.valueOf(i));
+            list3.add(String.valueOf(i));
+            list4.add(String.valueOf(i));
+            list5.add(String.valueOf(i));
+        }
+
+        long start = System.currentTimeMillis();
+        list1.removeIf(it -> it.contains("4"));
+        System.out.println(list1.size() + ", " + (System.currentTimeMillis() - start));
+
+        start = System.currentTimeMillis();
+        for (int i = list2.size() - 1; i >= 0; i--) {
+            String val = list2.get(i);
+            if (val.contains("4")) {
+                list2.remove(i);
+            }
+        }
+        System.out.println(list2.size() + ", " + (System.currentTimeMillis() - start));
+
+        start = System.currentTimeMillis();
+        for (Iterator<String> i = list3.iterator(); i.hasNext(); ) {
+            if (i.next().contains("4")) {
+                i.remove();
+            }
+        }
+        System.out.println(list3.size() + ", " + (System.currentTimeMillis() - start));
+
+        start = System.currentTimeMillis();
+        for (int i = list4.size() - 1; i >= 0; i--) {
+            String val = list4.get(i);
+            if (val.contains("4")) {
+                list4.remove(val);
+            }
+        }
+        System.out.println(list4.size() + ", " + (System.currentTimeMillis() - start));
+
+        start = System.currentTimeMillis();
+        List<String> result = new ArrayList<>();
+        for (int i = 0, n = list5.size(); i < n; i++) {
+            String val = list5.get(i);
+            if (!val.contains("4")) {
+                result.add(val);
+            }
+        }
+        System.out.println(result.size() + ", " + (System.currentTimeMillis() - start));
+
+
+//        long start=System.currentTimeMillis();
+//        Integer[] arr1=list.toArray(new Integer[0]);
+//        System.out.println(System.currentTimeMillis()-start);
+//
+//        start=System.currentTimeMillis();
+//        Integer[] arr2=list.toArray(new Integer[list.size()]);
+//        System.out.println(System.currentTimeMillis()-start);
+
 
     }
+
+//    static class Wine {
+//        String name() {
+//            return "wine";
+//        }
+//    }
+//
+//    static class SparklingWine extends Wine {
+//        @Override
+//        String name() {
+//            return "sparkling wine";
+//        }
+//    }
+//
+//    static class Champagne extends SparklingWine {
+//        @Override
+//        String name() {
+//            return "champagne";
+//        }
+//    }
+
+//    static String classify(Set<?> s) {
+//        return "Set";
+//    }
+//
+//    static String classify(List<?> lst) {
+//        return "List";
+//    }
+//
+//    static String classify(Collection<?> c) {
+//        return "Unknown Collection";
+//    }
+
+//    static String classify(Collection<?> c) {
+//        return c instanceof Set ? "Set" :
+//                c instanceof List ? "List" : "Unknown Collection";
+//    }
 
 //    private static <T> T[] pickTwo(T a, T b, T c){
 //        switch (ThreadLocalRandom.current().nextInt(3)){
