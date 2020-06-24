@@ -7,6 +7,7 @@ import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 
@@ -48,12 +49,17 @@ public class HttpClientTest {
         }
         httpPost.setEntity(builder.build());
 
-
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
              CloseableHttpResponse response = httpClient.execute(httpPost)) {
-            // 即使服务器Controller中方法的返回类型是void，response.getEntity()也不会是null，
-            //EntityUtils.toString(response.getEntity())的值是空字符串""。
-            return EntityUtils.toString(response.getEntity());
+            String resString = "";
+            HttpEntity resEntity = response.getEntity();
+            if (resEntity != null) {
+                // 即使服务器Controller中方法的返回类型是void，response.getEntity()也不会是null，
+                //EntityUtils.toString(response.getEntity())的值是空字符串""。
+                resString = EntityUtils.toString(resEntity);
+            }
+            EntityUtils.consume(resEntity);
+            return resString;
         } catch (IOException | ParseException e) {
             e.printStackTrace();
             throw new RuntimeException(e.getMessage());

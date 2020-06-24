@@ -1,5 +1,7 @@
 package com.myapp.exercise.test;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -17,7 +19,6 @@ public class TestJava {
 //    }
 
     public static void main(String[] args) {
-
 //        TestJava f = new TestJava();
 //        f.putFavorite(String.class, "Java");
 //        f.putFavorite(Integer.class, 0xcafebabe);
@@ -312,22 +313,22 @@ public class TestJava {
 //                .toString();
 //        System.out.println(r);
 
-        /*List<String> list = new ArrayList<>();
-        list.add("a");
-        list.add("b");
-        list.add("c");
-        String s = null;
-        list.forEach(it -> {
-            if ("b".equals(it)) {
-//                s=it; // 编译报错，lambda中必须使用常量或effectively常量，其实就是不能再次用等号对变量进行赋值
-//                return; // 结束本次循环，继续下次循环，作用相当于普通循环中的continue
-//                continue; // 编译报错，不能在此使用
-//                break; // 编译报错，不能在此使用
-//                throw new RuntimeException(); // 结束整个循环，作用相当于普通循环中的break
-//                throw new Exception(); // 编译报错，因为Consumer接口的accept方法未声明checked异常
-            }
-            System.out.println(Thread.currentThread() + it);
-        });*/
+//        List<String> list = new ArrayList<>();
+//        list.add("a");
+//        list.add("b");
+//        list.add("c");
+//        String s = null;
+//        list.forEach(it -> {
+//            if ("b".equals(it)) {
+////                s=it; // 编译报错，lambda中必须使用常量或effectively常量，其实就是不能再次用等号对变量进行赋值
+////                return; // 结束本次循环，继续下次循环，作用相当于普通循环中的continue
+////                continue; // 编译报错，不能在此使用
+////                break; // 编译报错，不能在此使用
+////                throw new RuntimeException(); // 结束整个循环，作用相当于普通循环中的break
+////                throw new Exception(); // 编译报错，因为Consumer接口的accept方法未声明checked异常
+//            }
+//            System.out.println(Thread.currentThread() + it);
+//        });
 
 //        Collection<?>[] collections = {
 //                new HashSet<String>(),
@@ -352,59 +353,58 @@ public class TestJava {
 //        ExecutorService exec = Executors.newCachedThreadPool();
 //        exec.submit((Runnable) System.out::println);
 
-        List<String> list1 = new ArrayList<>();
-        List<String> list2 = new ArrayList<>();
-        List<String> list3 = new ArrayList<>();
-        List<String> list4 = new ArrayList<>();
-        List<String> list5 = new ArrayList<>();
-        for (int i = 0; i < 100000; i++) {
-            list1.add(String.valueOf(i));
-            list2.add(String.valueOf(i));
-            list3.add(String.valueOf(i));
-            list4.add(String.valueOf(i));
-            list5.add(String.valueOf(i));
-        }
-
-        long start = System.currentTimeMillis();
-        list1.removeIf(it -> it.contains("4"));
-        System.out.println(list1.size() + ", " + (System.currentTimeMillis() - start));
-
-        start = System.currentTimeMillis();
-        for (int i = list2.size() - 1; i >= 0; i--) {
-            String val = list2.get(i);
-            if (val.contains("4")) {
-                list2.remove(i);
-            }
-        }
-        System.out.println(list2.size() + ", " + (System.currentTimeMillis() - start));
-
-        start = System.currentTimeMillis();
-        for (Iterator<String> i = list3.iterator(); i.hasNext(); ) {
-            if (i.next().contains("4")) {
-                i.remove();
-            }
-        }
-        System.out.println(list3.size() + ", " + (System.currentTimeMillis() - start));
-
-        start = System.currentTimeMillis();
-        for (int i = list4.size() - 1; i >= 0; i--) {
-            String val = list4.get(i);
-            if (val.contains("4")) {
-                list4.remove(val);
-            }
-        }
-        System.out.println(list4.size() + ", " + (System.currentTimeMillis() - start));
-
-        start = System.currentTimeMillis();
-        List<String> result = new ArrayList<>();
-        for (int i = 0, n = list5.size(); i < n; i++) {
-            String val = list5.get(i);
-            if (!val.contains("4")) {
-                result.add(val);
-            }
-        }
-        System.out.println(result.size() + ", " + (System.currentTimeMillis() - start));
-
+//        List<String> list1 = new ArrayList<>();
+//        List<String> list2 = new ArrayList<>();
+//        List<String> list3 = new ArrayList<>();
+//        List<String> list4 = new ArrayList<>();
+//        List<String> list5 = new ArrayList<>();
+//        for (int i = 0; i < 100000; i++) {
+//            list1.add(String.valueOf(i));
+//            list2.add(String.valueOf(i));
+//            list3.add(String.valueOf(i));
+//            list4.add(String.valueOf(i));
+//            list5.add(String.valueOf(i));
+//        }
+//
+//        long start = System.currentTimeMillis();
+//        list1.removeIf(it -> it.contains("4"));
+//        System.out.println(list1.size() + ", " + (System.currentTimeMillis() - start));
+//
+//        start = System.currentTimeMillis();
+//        for (int i = list2.size() - 1; i >= 0; i--) {
+//            String val = list2.get(i);
+//            if (val.contains("4")) {
+//                list2.remove(i);
+//            }
+//        }
+//        System.out.println(list2.size() + ", " + (System.currentTimeMillis() - start));
+//
+//        start = System.currentTimeMillis();
+//        for (Iterator<String> i = list3.iterator(); i.hasNext(); ) {
+//            if (i.next().contains("4")) {
+//                i.remove();
+//            }
+//        }
+//        System.out.println(list3.size() + ", " + (System.currentTimeMillis() - start));
+//
+//        start = System.currentTimeMillis();
+//        for (int i = list4.size() - 1; i >= 0; i--) {
+//            String val = list4.get(i);
+//            if (val.contains("4")) {
+//                list4.remove(val);
+//            }
+//        }
+//        System.out.println(list4.size() + ", " + (System.currentTimeMillis() - start));
+//
+//        start = System.currentTimeMillis();
+//        List<String> result = new ArrayList<>();
+//        for (int i = 0, n = list5.size(); i < n; i++) {
+//            String val = list5.get(i);
+//            if (!val.contains("4")) {
+//                result.add(val);
+//            }
+//        }
+//        System.out.println(result.size() + ", " + (System.currentTimeMillis() - start));
 
 //        long start=System.currentTimeMillis();
 //        Integer[] arr1=list.toArray(new Integer[0]);
@@ -413,8 +413,62 @@ public class TestJava {
 //        start=System.currentTimeMillis();
 //        Integer[] arr2=list.toArray(new Integer[list.size()]);
 //        System.out.println(System.currentTimeMillis()-start);
+//        C1 c1 = new C1();
+//        C2 c2 = new C2();
+//        try {
+//            c1.test();
+//            c2.test();
+//        } finally {
+//            try {
+//                c2.close();
+//                c1.close();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+
+        try (C1 c1 = new C1(); C2 c2 = new C2(); C0 c0 = new C0()) {
+            c0.test();
+            c1.test();
+            c2.test();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
+    }
+
+    static class C1 implements AutoCloseable {
+        @Override
+        public void close() throws Exception {
+            System.out.println("C1.close()");
+        }
+
+        public void test() {
+            System.out.println("C1.test()");
+        }
+    }
+
+    static class C2 implements AutoCloseable {
+        @Override
+        public void close() throws Exception {
+            System.out.println("C2.close()");
+        }
+
+        public void test() {
+            System.out.println("C2.test()");
+        }
+    }
+
+    static class C0 implements AutoCloseable {
+        @Override
+        public void close() throws Exception {
+            System.out.println("C0.close()");
+        }
+
+        public void test() {
+            System.out.println("C0.test()");
+        }
     }
 
 //    static class Wine {
