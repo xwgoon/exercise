@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class TestJava {
 
@@ -427,14 +428,27 @@ public class TestJava {
 //            }
 //        }
 
-        try (C1 c1 = new C1(); C2 c2 = new C2(); C0 c0 = new C0()) {
-            c0.test();
-            c1.test();
-            c2.test();
-        } catch (Exception e) {
-            e.printStackTrace();
+//        try (C1 c1 = new C1(); C2 c2 = new C2(); C0 c0 = new C0()) {
+//            c0.test();
+//            c1.test();
+//            c2.test();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+        List<String> list=new CopyOnWriteArrayList<>();
+//        List<String> list=new ArrayList<>();
+        list.add("a");
+        list.add("b");
+        list.add("b");
+        list.add("c");
+        for (String s : list) {
+            if("b".equals(s)){
+                list.remove(s);
+            }
         }
 
+        System.out.println(list);
 
     }
 
