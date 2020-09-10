@@ -2,10 +2,9 @@ package com.myapp.exercise.test;
 
 import java.io.Closeable;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class TestJava {
 
@@ -19,7 +18,10 @@ public class TestJava {
 //        return type.cast(favorites.get(type));
 //    }
 
-    public static void main(String[] args) {
+//    private static int nextSerialNumber = 0;
+//    private static final AtomicInteger nextSerialNumber = new AtomicInteger();
+
+    public static void main(String[] args) throws Exception {
 //        TestJava f = new TestJava();
 //        f.putFavorite(String.class, "Java");
 //        f.putFavorite(Integer.class, 0xcafebabe);
@@ -436,54 +438,111 @@ public class TestJava {
 //            e.printStackTrace();
 //        }
 
-        List<String> list=new CopyOnWriteArrayList<>();
-//        List<String> list=new ArrayList<>();
-        list.add("a");
-        list.add("b");
-        list.add("b");
-        list.add("c");
-        for (String s : list) {
-            if("b".equals(s)){
-                list.remove(s);
+//        List<String> list=new CopyOnWriteArrayList<>();
+////        List<String> list=new ArrayList<>();
+//        list.add("a");
+//        list.add("b");
+//        list.add("b");
+//        list.add("c");
+//        for (String s : list) {
+//            if("b".equals(s)){
+//                list.remove(s);
+//            }
+//        }
+//
+//        System.out.println(list);
+
+//        Map<Integer, Object> map=new ConcurrentHashMap<>();
+//        Runnable runnable=()->{
+//            for(int i=0;i<1000;i++){
+//                map.put(generateSerialNumber(),"");
+//            }
+//        };
+//
+//        for(int i=0;i<10;i++){
+//            new Thread(runnable).start();
+//        }
+//
+//        Thread.sleep(5000);
+//        System.out.println(map.size());
+
+        fun1();
+
+    }
+
+    private static final Object lock = new Object();
+
+    private static void fun1() throws ExecutionException, InterruptedException {
+        System.out.println("fun1开始");
+        synchronized (lock) {
+            ExecutorService executorService = Executors.newSingleThreadExecutor();
+            executorService.submit(TestJava::fun2).get();
+            executorService.shutdown();
+//            fun2();
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+        System.out.println("fun1结束");
+    }
+
+    private static void fun2() {
+        System.out.println("fun2开始");
+        synchronized (lock) {
+            System.out.println("fun2获取到锁");
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
-
-        System.out.println(list);
-
+        System.out.println("fun2结束");
     }
 
-    static class C1 implements AutoCloseable {
-        @Override
-        public void close() throws Exception {
-            System.out.println("C1.close()");
-        }
+//    public static synchronized int generateSerialNumber() {
+//        return nextSerialNumber++;
+//    }
 
-        public void test() {
-            System.out.println("C1.test()");
-        }
-    }
-
-    static class C2 implements AutoCloseable {
-        @Override
-        public void close() throws Exception {
-            System.out.println("C2.close()");
-        }
-
-        public void test() {
-            System.out.println("C2.test()");
-        }
-    }
-
-    static class C0 implements AutoCloseable {
-        @Override
-        public void close() throws Exception {
-            System.out.println("C0.close()");
-        }
-
-        public void test() {
-            System.out.println("C0.test()");
-        }
-    }
+//    public static int generateSerialNumber() {
+//        return nextSerialNumber.getAndIncrement();
+//    }
+//
+//    static class C1 implements AutoCloseable {
+//        @Override
+//        public void close() throws Exception {
+//            System.out.println("C1.close()");
+//        }
+//
+//        public void test() {
+//            System.out.println("C1.test()");
+//        }
+//    }
+//
+//    static class C2 implements AutoCloseable {
+//        @Override
+//        public void close() throws Exception {
+//            System.out.println("C2.close()");
+//        }
+//
+//        public void test() {
+//            System.out.println("C2.test()");
+//        }
+//    }
+//
+//    static class C0 implements AutoCloseable {
+//        @Override
+//        public void close() throws Exception {
+//            System.out.println("C0.close()");
+//        }
+//
+//        public void test() {
+//            System.out.println("C0.test()");
+//        }
+//    }
 
 //    static class Wine {
 //        String name() {
