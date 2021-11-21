@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>PostMessage Test</title>
+  </head>
+
+  <body style="padding:50px">
+    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <textarea id="ipt_message" rows="4" cols="50">
+  hello there from postMessage!
+  </textarea
+    >
+    <br />
+    <button onclick="myFunction()">Click me</button>
+    <script>
+      var popup,timer;
+      function myFunction() {
+        //document.getElementById("ipt_message").value = "Hello World";
+        popup = window.open("/index.html#/Transaction/create", "BaseApp");
+        timer = setInterval(function(){
+          popup.postMessage(document.getElementById("ipt_message").value);
+        },1000);
+        //popup.postMessage("expectResponse");
+      }
+      function receiveMessage(event) {
+        // For Chrome, the origin property is in the event.originalEvent
+        // object.
+        var origin = event.origin || event.originalEvent.origin;
+        console.log(event);
+        clearInterval(timer);
+      }
+      window.addEventListener("message", receiveMessage, false);
+    </script>
+  </body>
+</html>

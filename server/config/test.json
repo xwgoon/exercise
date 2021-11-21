@@ -1,0 +1,25 @@
+{
+    "File": {
+        "fileUploadDir": "__test__/acceptanceTest/testUploads",
+        "fileStorageDir": "__test__/acceptanceTest/testStorage",
+        "testFilesDir": "__test__/acceptanceTest/testFiles",
+        "testDownloads": "__test__/acceptanceTest/testDownloads",
+        "uploadLimits": {
+            "fields": 8,
+            "fileSize": 1000000000,
+            "files": 600
+        }
+    },
+    "Log": {
+        "api": {
+            "format": "dev",
+            "showErrorOnConsole": true,
+            "logDir": "__test__/acceptanceTest/log/api"
+        },
+        "serverInner": {
+            "showErrorOnConsole": true,
+            "logDir": "__test__/acceptanceTest/log/serverInner"
+        }
+    },
+    "RequesterPrvkey": "-----BEGIN PRIVATE KEY-----\nMIGNAgEAMBAGByqGSM49AgEGBSuBBAAKBHYwdAIBAQQgOUm2PF8apyaK1bXjKH5j\njCld/I6ExpefemRGsS0C4+WgBwYFK4EEAAqhRANCAAT6VLE/eF9+sK1ROn8n6x7h\nKsBxehW42qf1IB8quBn5OrQD3x2H4yZVDwPgcEUCjH8PcFgswdtbo8JL/7f66yEC\n-----END PRIVATE KEY-----"
+}

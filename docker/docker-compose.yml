@@ -1,0 +1,56 @@
+version: '3'
+services:
+  prisma:
+    image: prismagraphql/prisma:1.29
+    container_name: crbb_prisma
+    restart: always
+    ports:
+      - 4466:4466
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        # uncomment the next line and provide the env var PRISMA_MANAGEMENT_API_SECRET=my-secret to activate cluster security
+        # managementApiSecret: my-secret
+        databases:
+          default:
+            connector: mysql
+            host: mysql
+            port: 3306
+            user: root
+            password: prisma
+            migrations: true
+
+  mysql:
+    image: mysql:5.7
+    container_name: crbb_mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: prisma
+    # volumes:
+    #   - mysql:/var/lib/mysql
+
+  repchain:
+    build: 
+      context: https://gitee.com/BTAJL/QuicStart.git#RepChain_1.0_zj
+      dockerfile: Dockerfile
+    image: repchain:1.0
+    container_name: crbb_repchain
+    restart: always
+    ports: 
+      - 8081:8081
+
+  app:
+    build: 
+      context: ..
+      dockerfile: docker/dockerfile
+    image: crbb
+    container_name: crbb_app
+    restart: always
+    command: /bin/bash -c "wait-for-it prisma:4466 -t 30 -- wait-for-it mysql:3306 -t 30 -- wait-for-it repchain:8081 -t 30 --  npx prisma deploy && nginx -g 'daemon on;' && sleep 15 && yarn start "
+    ports: 
+      - 3000:3000
+# volumes:
+#   mysql:
+

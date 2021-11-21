@@ -1,0 +1,29 @@
+type ImageMeta {
+    id: ID! @unique
+    hash: String! @unique
+    hashAlg: String!
+    name: String!
+    desc: String!
+    storagePath: String,
+    url: String
+}
+
+enum RegisterStatus {
+    REQUESTED
+    REGISTERED
+    REJECTED
+}
+
+type CopyrightRegistration {
+    id: ID! @unique
+    copRegKey: String! @unique
+    ownerId: String!
+    requestTxId: String
+    registerTxId: String 
+    rejectTxId: String 
+    requestNotes: String
+    registerNotes: String
+    rejectNotes: String
+    status: RegisterStatus!
+    image: ImageMeta
+}

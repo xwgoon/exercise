@@ -1,0 +1,75 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/server.js",
+      "env": {
+        "NODE_ENV": "test"
+      },
+      "console": "integratedTerminal",
+      "outFiles": [
+        "${workspaceFolder}/.compiled/**/*.js"
+      ]
+    },
+    // {
+    //   "name": "Debug BlockchainSync",
+    //   "type": "node",
+    //   "request": "launch",
+    //   "program": "${workspaceFolder}/src/blockchainSync/index.js",
+    //   "env": {
+    //     "NODE_ENV": "test"
+    //   },
+    //   "console": "integratedTerminal",
+    //   "outFiles": [
+    //     "${workspaceFolder}/.compiled/**/*.js"
+    //   ]
+    // },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest All",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": [
+        "--runInBand"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest Current File",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": [
+        "--detectOpenHandles",
+        "--forceExit",
+        "${relativeFile}"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      }
+    },
+    /*
+    {
+      "name": "Chrome",
+      "type": "chrome",
+      "request": "launch",
+      // 在linux下只有chromium，需要配置该项
+      "runtimeExecutable": "/usr/bin/chromium",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceRoot}/src",
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      }
+    }
+    */
+  ]
+}

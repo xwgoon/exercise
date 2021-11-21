@@ -1,0 +1,30 @@
+FROM node:10.23.0
+
+WORKDIR /usr/app/crbb
+
+RUN apt-get update \ 
+    && apt-get install -y nginx  \
+    && apt-get install -y openjdk-8-jdk \
+    && apt-get install -y wait-for-it \
+    && apt-get clean
+ 
+COPY package.json ./
+COPY yarn.lock ./
+COPY server/package.json server/
+COPY server/yarn.lock server/
+
+RUN yarn install-all \
+    && cd ..
+
+COPY . .
+
+RUN sed -i "s/http:\/\/localhost:8081/\/repchain/; s/http:\/\/localhost:4466/\/prisma/g; s/ws:\/\/localhost:5000/ws:\/\/localhost:3000\/ws/" src/settings.js \
+    && yarn react-build && rm -fr node_modules \
+    && cp docker/nginx.conf /etc/nginx/nginx.conf \
+    && cd server \
+    && sed -i "6,$ s/^/#/" helpers/deployPrisma.sh \
+    && sed -i "s/localhost/prisma/" src/db/prisma/prisma.yml \
+    && sed -i "s/localhost/repchain/" config/default.json \
+    && yarn deploy
+
+WORKDIR /usr/app/crbb/server/src/db/prisma

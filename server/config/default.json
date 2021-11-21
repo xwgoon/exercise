@@ -1,0 +1,45 @@
+{
+    "File": {
+        "fileUploadDir": "/tmp/CRBBUploads",
+        "fileStorageDir": "CRBB/Storage",
+        "uploadLimits": {
+            "fields": 8,
+            "fileSize": 1000000000,
+            "files": 100
+        }
+    },
+    "Log": {
+        "api": {
+            "enabled": true,
+            "level": "common",
+            "format": "combined",
+            "logDir": "CRBB/Log/api"
+        },
+        "serverInner": {
+            "enabled": true,
+            "level": "info",
+            "logDir": "CRBB/Log/serverInner" 
+        },
+        "repchainSynchronizerLogPath": "CRBB/Log/repchainSynchronizer.log"
+    },
+    "ServerCrypto": {
+        "prvKeyFilePath": "CRBB/crypto/prvkey.pem",
+        "prvKeyPassword": "",
+        "pubKeyFilePath": "CRBB/crypto/pubkey.pem",
+        "alg": "sha1",
+        "creditCode": "121000005l35120456",
+        "certName": "node1",
+        "jwtSignAlg": "HS256",
+        "jwtSecrect": "server-secrect"
+    },
+    "RepChain": {
+        "default": {
+            "url_subscribe": "ws://localhost:8081/event",
+            "url_api": "http://localhost:8081"
+        },
+        "server": "http://localhost",
+        "port": 8081,
+        "chaincodeName": "CopyrightRegisterContract",
+        "chaincodeVersion": 1
+    }
+}

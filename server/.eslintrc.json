@@ -1,0 +1,22 @@
+{
+    "plugins": ["jest", "import", "promise"],
+    "extends": ["airbnb-base", "plugin:jest/recommended", "plugin:promise/recommended"],
+    "rules": {
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "no-underscore-dangle": "off",
+        "no-plusplus": "off",
+        "no-trailing-spaces": "off",
+        "quotes": ["error", "double"],
+        "no-param-reassign": ["error", {"props": false}],
+        "no-restricted-syntax": "off",
+        "function-paren-newline": "off",
+
+
+        "jest/no-focused-tests": "off",
+        "jest/no-alias-methods": "off",
+
+        "promise/always-return": "warn",
+        "promise/catch-or-return": "off",
+        "promise/no-nesting": "off"
+    }
+}
